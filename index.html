@@ -135,18 +135,20 @@
 
   .hero-image {
     position: relative;
-    overflow: hidden;
     background: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 3rem 2rem;
   }
   .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 15%;
+    width: auto;
+    max-width: 340px;
+    max-height: 420px;
+    height: auto;
     display: block;
+    border-radius: 2px;
+    box-shadow: 0 8px 32px rgba(31,58,95,0.12);
   }
 
   /* SECTIONS */
@@ -389,28 +391,21 @@
     letter-spacing: 0.08em;
   }
 
-  /* MASTERBRAND DOCS SHOWCASE */
-  .mb-docs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .mb-doc { display: flex; flex-direction: column; gap: 0; position: relative; }
+  /* MASTERBRAND DOCS — large top + two below */
+  .mb-docs { display: flex; flex-direction: column; gap: 4px; }
+  .mb-doc { display: flex; flex-direction: column; position: relative; }
   .mb-doc-img {
     overflow: hidden;
-    border-radius: 4px 4px 0 0;
-    box-shadow: 0 4px 20px rgba(31,58,95,0.15);
-    aspect-ratio: 4/3;
     background: var(--white);
+    width: 100%;
   }
   .mb-doc-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    width: 100%;
+    height: auto;
     display: block;
     transition: transform 0.4s ease;
   }
-  .mb-doc:hover .mb-doc-img img { transform: scale(1.04); }
+  .mb-doc:hover .mb-doc-img img { transform: scale(1.02); }
   .mb-doc-label {
     font-size: 0.65rem;
     font-weight: 400;
@@ -420,119 +415,69 @@
     text-align: center;
     background: rgba(31,58,95,0.9);
     padding: 0.4rem 0.5rem;
-    border-radius: 0 0 4px 4px;
   }
-
-  /* EOFY GRID */
-  .eofy-grid {
+  .mb-docs-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 4px;
   }
-  .eofy-cell {
-    overflow: hidden;
-    background: var(--white);
-    aspect-ratio: 9/13;
-  }
-  .eofy-cell img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  .eofy-cell:hover img { transform: scale(1.04); }
-  .eofy-wide {
-    grid-column: span 4;
-    aspect-ratio: 16/5;
-  }
-  .eofy-wide img { object-fit: contain; object-position: center; background: var(--white); }
 
-  /* RB10 CAMPAIGN GRID — 3x2 square tiles */
+  /* EOFY GRID — 2 rows of 4, then full-width banner */
+  .eofy-grid { display: flex; flex-direction: column; gap: 4px; }
+  .eofy-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .eofy-cell { overflow: hidden; background: var(--white); }
+  .eofy-cell img { width: 100%; height: auto; display: block; transition: transform 0.3s ease; }
+  .eofy-cell:hover img { transform: scale(1.02); }
+  .eofy-banner { overflow: hidden; background: var(--white); }
+  .eofy-banner img { width: 100%; height: auto; display: block; }
+
+  /* RB10 CAMPAIGN GRID — 3x2 natural squares */
   .rb10-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    gap: 4px;
   }
-  .rb10-cell {
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    background: var(--card);
-  }
+  .rb10-cell { overflow: hidden; background: var(--card); }
   .rb10-cell img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    width: 100%; height: auto;
     display: block;
     transition: transform 0.4s ease;
   }
-  .rb10-cell:hover img { transform: scale(1.05); }
+  .rb10-cell:hover img { transform: scale(1.03); }
 
-  /* SKIP MOSAIC */
-  .skip-mosaic { display: flex; flex-direction: column; gap: 6px; }
-  .skip-mosaic-main {
-    width: 100%;
-    aspect-ratio: 3/2;
-    overflow: hidden;
-  }
-  .skip-mosaic-main img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .skip-mosaic-main:hover img { transform: scale(1.03); }
+  /* SKIP MOSAIC — large hero + 4-wide strip */
+  .skip-mosaic { display: flex; flex-direction: column; gap: 4px; }
+  .skip-mosaic-main { overflow: hidden; width: 100%; }
+  .skip-mosaic-main img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .skip-mosaic-main:hover img { transform: scale(1.02); }
   .skip-mosaic-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-  }
-  .skip-mosaic-cell {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-    background: var(--card);
-  }
-  .skip-mosaic-cell img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 20%;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .skip-mosaic-cell:hover img { transform: scale(1.05); }
-
-  /* CHANNEL GRID */
-  .channel-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 4px;
   }
-  .channel-grid-item {
-    position: relative;
-    overflow: hidden;
-    background: var(--card);
-    aspect-ratio: 3/4;
+  .skip-mosaic-cell { overflow: hidden; background: var(--card); }
+  .skip-mosaic-cell img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .skip-mosaic-cell:hover img { transform: scale(1.03); }
+
+  /* GWHD CHANNEL LAYOUT — banner top, then 2x2 grid */
+  .gwhd-layout { display: flex; flex-direction: column; gap: 4px; }
+  .gwhd-banner { overflow: hidden; width: 100%; position: relative; }
+  .gwhd-banner img { width: 100%; height: auto; display: block; }
+  .gwhd-banner-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(31,58,95,0.9); color: var(--white);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 0.5rem; text-align: center;
   }
-  .channel-grid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .channel-grid-item:hover img { transform: scale(1.04); }
-  .channel-grid-label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(31,58,95,0.9);
-    color: var(--white);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.4rem 0.5rem;
-    text-align: center;
+  .gwhd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .gwhd-cell { overflow: hidden; background: var(--card); position: relative; }
+  .gwhd-cell img { width: 100%; height: auto; display: block; transition: transform 0.3s ease; }
+  .gwhd-cell:hover img { transform: scale(1.02); }
+  .gwhd-cell-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(31,58,95,0.9); color: var(--white);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 0.5rem; text-align: center;
   }
 
   /* ANIMATIONS */
@@ -548,28 +493,29 @@
     nav { padding: 1rem 1.5rem; }
     .hero { grid-template-columns: 1fr; }
     .hero-text { padding: 5rem 1.5rem 3rem; }
-    .hero-image { height: 65vw; }
+    .hero-image { padding: 2rem; min-height: 50vw; }
+    .hero-image img { max-width: 260px; max-height: 320px; }
     section { padding: 4rem 1.5rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .cs-card { grid-template-columns: 1fr; }
     .cs-text { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
     .cs-images { padding: 2rem 1.5rem; }
+    .eofy-row { grid-template-columns: repeat(2, 1fr); }
+    .gwhd-row { grid-template-columns: 1fr 1fr; }
+    .mb-docs-row { grid-template-columns: 1fr 1fr; }
     .rb10-grid { grid-template-columns: repeat(3, 1fr); }
     .skip-mosaic-grid { grid-template-columns: repeat(4, 1fr); }
-    .eofy-grid { grid-template-columns: repeat(4, 1fr); }
-    .mb-docs { grid-template-columns: repeat(3, 1fr); }
-    .channel-grid { grid-template-columns: repeat(3, 1fr); }
     .contact-grid { grid-template-columns: 1fr; max-width: 400px; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
     .cs-text, .cs-images { padding: 1.5rem; }
+    .eofy-row { grid-template-columns: repeat(2, 1fr); }
     .rb10-grid { grid-template-columns: repeat(2, 1fr); }
     .skip-mosaic-grid { grid-template-columns: repeat(2, 1fr); }
-    .eofy-grid { grid-template-columns: repeat(2, 1fr); }
-    .mb-docs { grid-template-columns: repeat(2, 1fr); }
-    .channel-grid { grid-template-columns: repeat(2, 1fr); }
+    .gwhd-row { grid-template-columns: 1fr; }
+    .mb-docs-row { grid-template-columns: 1fr; }
     .contact-cta-links { flex-direction: column; align-items: center; }
   }
 </style>
@@ -751,13 +697,19 @@
     <div class="cs-images">
       <p class="cs-img-label">Campaign channels</p>
       <div class="eofy-grid">
-        <div class="eofy-cell"><img src="eofy1.jpg" alt="EOFY teaser"></div>
-        <div class="eofy-cell"><img src="eofy4.jpg" alt="20% off social"></div>
-        <div class="eofy-cell"><img src="eofy5.jpg" alt="Prams social"></div>
-        <div class="eofy-cell"><img src="eofy6.jpg" alt="EOFY savings"></div>
-        <div class="eofy-cell eofy-wide"><img src="eofy8.png" alt="Website banner"></div>
-        <div class="eofy-cell"><img src="eofy9.png" alt="Mobile"></div>
-        <div class="eofy-cell"><img src="eofy2.jpg" alt="Product grid"></div>
+        <div class="eofy-row">
+          <div class="eofy-cell"><img src="eofy1.jpg" alt="EOFY teaser"></div>
+          <div class="eofy-cell"><img src="eofy11.png" alt="EOFY product"></div>
+          <div class="eofy-cell"><img src="eofy3.png" alt="EOFY lifestyle"></div>
+          <div class="eofy-cell"><img src="eofy2.jpg" alt="Product grid"></div>
+        </div>
+        <div class="eofy-row">
+          <div class="eofy-cell"><img src="eofy4.jpg" alt="20% off social"></div>
+          <div class="eofy-cell"><img src="eofy5.jpg" alt="Prams social"></div>
+          <div class="eofy-cell"><img src="eofy6.jpg" alt="EOFY savings"></div>
+          <div class="eofy-cell"><img src="eofy9.png" alt="Mobile"></div>
+        </div>
+        <div class="eofy-banner"><img src="eofy8.png" alt="Website banner"></div>
       </div>
     </div>
   </div>
@@ -793,26 +745,30 @@
     </div>
     <div class="cs-images">
       <p class="cs-img-label">Campaign channels</p>
-      <div class="channel-grid">
-        <div class="channel-grid-item">
-          <img src="gwhd-banner.jpg" alt="Hero banner">
-          <span class="channel-grid-label">Campaign Banner</span>
+      <div class="gwhd-layout">
+        <div class="gwhd-banner">
+          <img src="gwhd-banner.jpg" alt="Campaign banner">
+          <span class="gwhd-banner-label">Campaign Banner</span>
         </div>
-        <div class="channel-grid-item">
-          <img src="gwhd-dm.png" alt="Direct mail">
-          <span class="channel-grid-label">Direct Mail</span>
+        <div class="gwhd-row">
+          <div class="gwhd-cell">
+            <img src="gwhd-website.png" alt="Website">
+            <span class="gwhd-cell-label">Website</span>
+          </div>
+          <div class="gwhd-cell">
+            <img src="gwhd-dm.png" alt="Direct Mail">
+            <span class="gwhd-cell-label">Direct Mail</span>
+          </div>
         </div>
-        <div class="channel-grid-item">
-          <img src="gwhd-edm.png" alt="eDM">
-          <span class="channel-grid-label">eDM</span>
-        </div>
-        <div class="channel-grid-item">
-          <img src="gwhd-social.png" alt="Social">
-          <span class="channel-grid-label">Social</span>
-        </div>
-        <div class="channel-grid-item" style="grid-column:span 2;">
-          <img src="gwhd-website.png" alt="Website">
-          <span class="channel-grid-label">Website</span>
+        <div class="gwhd-row">
+          <div class="gwhd-cell">
+            <img src="gwhd-social.png" alt="Social">
+            <span class="gwhd-cell-label">Social</span>
+          </div>
+          <div class="gwhd-cell">
+            <img src="gwhd-edm.png" alt="eDM">
+            <span class="gwhd-cell-label">eDM</span>
+          </div>
         </div>
       </div>
     </div>
@@ -851,13 +807,15 @@
           <div class="mb-doc-img"><img src="mb-brand.png" alt="Masterbrand Guidelines"></div>
           <p class="mb-doc-label">Masterbrand Guidelines</p>
         </div>
-        <div class="mb-doc">
-          <div class="mb-doc-img"><img src="mb-digital.png" alt="Digital Brand Guidelines"></div>
-          <p class="mb-doc-label">Digital Brand Guidelines</p>
-        </div>
-        <div class="mb-doc">
-          <div class="mb-doc-img"><img src="mb-food.png" alt="Food Photography Guidelines"></div>
-          <p class="mb-doc-label">Photography Guidelines</p>
+        <div class="mb-docs-row">
+          <div class="mb-doc">
+            <div class="mb-doc-img"><img src="mb-digital.png" alt="Digital Brand Guidelines"></div>
+            <p class="mb-doc-label">Digital Guidelines</p>
+          </div>
+          <div class="mb-doc">
+            <div class="mb-doc-img"><img src="mb-food.png" alt="Food Photography Guidelines"></div>
+            <p class="mb-doc-label">Photography Guidelines</p>
+          </div>
         </div>
       </div>
     </div>
