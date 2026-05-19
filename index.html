@@ -218,53 +218,38 @@
   }
   .excites-body p + p { margin-top: 1rem; }
 
-  /* WORK */
+  /* WORK CARDS */
   .work { background: var(--bg); }
   .work-intro {
     max-width: 580px;
     font-size: 1.0rem;
     color: var(--mid);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     line-height: 1.7;
   }
-
-  .case-study {
+  .cs-card {
     background: var(--white);
-    margin-bottom: 3px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 3px;
   }
-  .case-study.reverse { direction: rtl; }
-  .case-study.reverse > * { direction: ltr; }
-
-  .case-image {
-    background: var(--card);
-    overflow: hidden;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .cs-text {
+    padding: 3rem 3rem 3rem 3.5rem;
+    border-right: 1px solid var(--border);
   }
-  .case-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .case-image-placeholder {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mid);
-    opacity: 0.5;
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .case-body {
-    padding: 3rem 3.5rem;
+  .cs-images {
+    padding: 3rem 3.5rem 3rem 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+  }
+  .cs-img-label {
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
   }
   .case-tag {
     font-size: 0.65rem;
@@ -438,35 +423,30 @@
     border-radius: 0 0 4px 4px;
   }
 
-  /* EOFY MIXED GRID */
+  /* EOFY GRID */
   .eofy-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 4px;
   }
   .eofy-cell {
     overflow: hidden;
     background: var(--white);
+    aspect-ratio: 9/13;
   }
   .eofy-cell img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center center;
+    object-position: center top;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
   }
   .eofy-cell:hover img { transform: scale(1.04); }
-  .eofy-tall { aspect-ratio: 9/16; }
   .eofy-wide {
-    grid-column: span 2;
-    aspect-ratio: 16/6;
-    background: var(--white);
+    grid-column: span 4;
+    aspect-ratio: 16/5;
   }
-  .eofy-wide img {
-    object-fit: contain;
-    object-position: center center;
-    background: var(--white);
-  }
+  .eofy-wide img { object-fit: contain; object-position: center; background: var(--white); }
 
   /* RB10 CAMPAIGN GRID — 3x2 square tiles */
   .rb10-grid {
@@ -522,34 +502,11 @@
   }
   .skip-mosaic-cell:hover img { transform: scale(1.05); }
 
-  /* CHANNEL GRID — campaign asset collage */
-  .case-study-full {
-    background: var(--white);
-    margin-bottom: 3px;
-    display: flex;
-    flex-direction: column;
-  }
-  .case-study-full .case-banner {
-    width: 100%;
-    height: 380px;
-    overflow: hidden;
-    display: block;
-  }
-  .case-study-full .case-banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    display: block;
-  }
-  .case-study-full .case-body {
-    padding: 3rem 3.5rem;
-  }
+  /* CHANNEL GRID */
   .channel-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
   }
   .channel-grid-item {
     position: relative;
@@ -594,24 +551,25 @@
     .hero-image { height: 65vw; }
     section { padding: 4rem 1.5rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .mb-docs { grid-template-columns: repeat(3, 1fr); }
-    .eofy-grid { grid-template-columns: repeat(2, 1fr); }
-    .eofy-wide { grid-column: span 2; }
+    .cs-card { grid-template-columns: 1fr; }
+    .cs-text { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+    .cs-images { padding: 2rem 1.5rem; }
     .rb10-grid { grid-template-columns: repeat(3, 1fr); }
-    .skip-mosaic-grid { grid-template-columns: repeat(2, 1fr); }
-    .case-study-full .case-body > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-    .channel-grid { grid-template-columns: repeat(2, 1fr); }
-    .case-study-full .case-body { padding: 2rem 1.5rem; }
-    .case-study,
-    .case-study.reverse { grid-template-columns: 1fr; direction: ltr; }
-    .case-study.reverse > * { direction: ltr; }
-    .case-image { min-height: 240px; }
+    .skip-mosaic-grid { grid-template-columns: repeat(4, 1fr); }
+    .eofy-grid { grid-template-columns: repeat(4, 1fr); }
+    .mb-docs { grid-template-columns: repeat(3, 1fr); }
+    .channel-grid { grid-template-columns: repeat(3, 1fr); }
     .contact-grid { grid-template-columns: 1fr; max-width: 400px; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
-    .case-body { padding: 2rem 1.5rem; }
+    .cs-text, .cs-images { padding: 1.5rem; }
+    .rb10-grid { grid-template-columns: repeat(2, 1fr); }
+    .skip-mosaic-grid { grid-template-columns: repeat(2, 1fr); }
+    .eofy-grid { grid-template-columns: repeat(2, 1fr); }
+    .mb-docs { grid-template-columns: repeat(2, 1fr); }
+    .channel-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-cta-links { flex-direction: column; align-items: center; }
   }
 </style>
@@ -675,263 +633,231 @@
   <p class="work-intro">A snapshot of campaigns, brand projects and initiatives across my career — from national fundraising pushes to consumer product launches.</p>
 
   <!-- 1: 10 Year Anniversary -->
-  <div class="case-study-full fade-in">
-    <div class="case-banner">
-      <img src="rb10-nuvo.jpg" alt="Redsbaby 10 Years — NUVO at Sydney Opera House" style="object-position: center 55%;">
+  <div class="cs-card fade-in">
+    <div class="cs-text">
+      <p class="case-tag">Redsbaby · Brand &amp; Product</p>
+      <h3 class="case-title">10 Year Anniversary<span class="red-stop">.</span></h3>
+      <p class="case-intro">Redsbaby's 10-year milestone was an opportunity to reflect on the journey so far — highlighting key achievements, the brand's evolution, and acknowledging the role customers have played in its success — while reinforcing position in a competitive, promotion-heavy category.</p>
+      <div class="case-sections">
+        <div class="case-section">
+          <p class="case-section-header">Challenge</p>
+          <p class="case-section-body">Celebrate the milestone in a way that felt meaningful — while using the moment to strengthen brand awareness and drive growth in a promotion-heavy category.</p>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Approach &amp; Execution</p>
+          <div class="case-section-body"><ul>
+            <li>Integrated campaign balancing brand storytelling with commercial intent</li>
+            <li>High-impact CGI placing products in iconic Australian locations for cut-through</li>
+            <li>Delivered across paid, owned and earned channels</li>
+            <li>Aligned with product, promotional and lifecycle activity to drive conversion</li>
+          </ul></div>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Impact</p>
+          <div class="impact-stats">
+            <div><span class="impact-num">+28%</span><span class="impact-label">Branded search &amp; direct traffic</span></div>
+            <div><span class="impact-num">+17%</span><span class="impact-label">Revenue over the 10-week campaign</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="case-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-        <div>
-          <p class="case-tag">Redsbaby · Brand &amp; Product</p>
-          <h3 class="case-title">10 Year Anniversary<span class="red-stop">.</span></h3>
-          <p class="case-intro">Redsbaby's 10-year milestone was an opportunity to reflect on the journey so far — highlighting key achievements, the brand's evolution, and acknowledging the role customers have played in its success — while reinforcing position in a competitive, promotion-heavy category.</p>
-          <div class="case-sections">
-            <div class="case-section">
-              <p class="case-section-header">Challenge</p>
-              <p class="case-section-body">Celebrate the milestone in a way that felt meaningful — while using the moment to strengthen brand awareness and drive growth in a promotion-heavy category.</p>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Approach &amp; Execution</p>
-              <div class="case-section-body"><ul>
-                <li>Integrated campaign balancing brand storytelling with commercial intent</li>
-                <li>High-impact CGI placing products in iconic Australian locations for cut-through</li>
-                <li>Delivered across paid, owned and earned channels</li>
-                <li>Aligned with product, promotional and lifecycle activity to drive conversion</li>
-              </ul></div>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Impact</p>
-              <div class="impact-stats">
-                <div><span class="impact-num">+28%</span><span class="impact-label">Branded search &amp; direct traffic</span></div>
-                <div><span class="impact-num">+17%</span><span class="impact-label">Revenue over the 10-week campaign</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">Campaign imagery — full product range</p>
-          <div class="rb10-grid">
-            <div class="rb10-cell"><img src="rb10-aeron.jpg" alt="AERON — Melbourne CBD"></div>
-            <div class="rb10-cell"><img src="rb10-connect.jpg" alt="CONNECT+ — Lighthouse"></div>
-            <div class="rb10-cell"><img src="rb10-hilo.jpg" alt="HILO2 — Beach"></div>
-            <div class="rb10-cell"><img src="rb10-nuvo.jpg" alt="NUVO — Sydney Opera House"></div>
-            <div class="rb10-cell"><img src="rb10-onix.jpg" alt="ONIX — Outback"></div>
-            <div class="rb10-cell"><img src="rb10-skip2.jpg" alt="SKIP2 — Airport"></div>
-          </div>
-        </div>
+    <div class="cs-images">
+      <p class="cs-img-label">Campaign imagery — full product range</p>
+      <div class="rb10-grid">
+        <div class="rb10-cell"><img src="rb10-aeron.jpg" alt="AERON — Melbourne CBD"></div>
+        <div class="rb10-cell"><img src="rb10-connect.jpg" alt="CONNECT+ — Lighthouse"></div>
+        <div class="rb10-cell"><img src="rb10-hilo.jpg" alt="HILO2 — Beach"></div>
+        <div class="rb10-cell"><img src="rb10-nuvo.jpg" alt="NUVO — Sydney Opera House"></div>
+        <div class="rb10-cell"><img src="rb10-onix.jpg" alt="ONIX — Outback"></div>
+        <div class="rb10-cell"><img src="rb10-skip2.jpg" alt="SKIP2 — Airport"></div>
       </div>
     </div>
   </div>
 
   <!-- 2: SKIP3 Launch -->
-  <div class="case-study-full fade-in">
-    <div class="case-banner">
-      <img src="skip1.jpg" alt="SKIP³ — defy gravity hero shot" style="object-position: center 40%;">
-    </div>
-    <div class="case-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-        <div>
-          <p class="case-tag">Redsbaby · New Product Launch</p>
-          <h3 class="case-title">SKIP³ Launch<span class="red-stop">.</span></h3>
-          <p class="case-intro">Following a decline in travel stroller sales, the SKIP³ launch was designed to regain momentum and recapture market share — while reinforcing Redsbaby's position in design and functionality.</p>
-          <div class="case-sections">
-            <div class="case-section">
-              <p class="case-section-header">Challenge</p>
-              <p class="case-section-body">Re-enter a competitive category with a clear point of difference — driving both product understanding and commercial performance in a feature-driven market.</p>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Approach &amp; Execution</p>
-              <div class="case-section-body"><ul>
-                <li>Dual creative platform: feature-led content plus a "defy gravity" brand concept</li>
-                <li>Led end-to-end launch strategy and delivery across paid, owned and earned</li>
-                <li>Integrated creative across video, imagery and digital</li>
-                <li>Messaging aligned to drive both awareness and conversion</li>
-              </ul></div>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Impact</p>
-              <div class="impact-stats">
-                <div><span class="impact-num">Sold out</span><span class="impact-label">Within the first four weeks</span></div>
-                <div><span class="impact-num">500k+</span><span class="impact-label">Units sold in the first month</span></div>
-              </div>
-            </div>
+  <div class="cs-card fade-in">
+    <div class="cs-text">
+      <p class="case-tag">Redsbaby · New Product Launch</p>
+      <h3 class="case-title">SKIP³ Launch<span class="red-stop">.</span></h3>
+      <p class="case-intro">Following a decline in travel stroller sales, the SKIP³ launch was designed to regain momentum and recapture market share — while reinforcing Redsbaby's position in design and functionality.</p>
+      <div class="case-sections">
+        <div class="case-section">
+          <p class="case-section-header">Challenge</p>
+          <p class="case-section-body">Re-enter a competitive category with a clear point of difference — driving both product understanding and commercial performance in a feature-driven market.</p>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Approach &amp; Execution</p>
+          <div class="case-section-body"><ul>
+            <li>Dual creative platform: feature-led content plus a "defy gravity" brand concept</li>
+            <li>Led end-to-end launch strategy and delivery across paid, owned and earned</li>
+            <li>Integrated creative across video, imagery and digital</li>
+            <li>Messaging aligned to drive both awareness and conversion</li>
+          </ul></div>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Impact</p>
+          <div class="impact-stats">
+            <div><span class="impact-num">Sold out</span><span class="impact-label">Within the first four weeks</span></div>
+            <div><span class="impact-num">500k+</span><span class="impact-label">Units sold in the first month</span></div>
           </div>
         </div>
-        <div>
-          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">Campaign imagery</p>
-          <div class="skip-mosaic">
-            <div class="skip-mosaic-main">
-              <img src="skip4.jpg" alt="SKIP³ at the station">
-            </div>
-            <div class="skip-mosaic-grid">
-              <div class="skip-mosaic-cell"><img src="skip2.jpg" alt="SKIP³ folded carry"></div>
-              <div class="skip-mosaic-cell"><img src="skip3.jpg" alt="SKIP³ unfold"></div>
-              <div class="skip-mosaic-cell"><img src="skip6.jpg" alt="SKIP³ with child"></div>
-              <div class="skip-mosaic-cell"><img src="skip11.jpg" alt="SKIP³ travel"></div>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="cs-images">
+      <p class="cs-img-label">Campaign imagery</p>
+      <div class="skip-mosaic">
+        <div class="skip-mosaic-main">
+          <img src="skip1.jpg" alt="SKIP³ defy gravity">
+        </div>
+        <div class="skip-mosaic-grid">
+          <div class="skip-mosaic-cell"><img src="skip4.jpg" alt="SKIP³ at the station"></div>
+          <div class="skip-mosaic-cell"><img src="skip5.jpg" alt="SKIP³ lifestyle"></div>
+          <div class="skip-mosaic-cell"><img src="skip6.jpg" alt="SKIP³ with child"></div>
+          <div class="skip-mosaic-cell"><img src="skip11.jpg" alt="SKIP³ travel"></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- 3: EOFY Promotion -->
-  <div class="case-study-full fade-in">
-    <div class="case-banner">
-      <img src="eofy3.png" alt="EOFY — lifestyle and product grid">
+  <div class="cs-card fade-in">
+    <div class="cs-text">
+      <p class="case-tag">Redsbaby · Promotion</p>
+      <h3 class="case-title">EOFY Promotion<span class="red-stop">.</span></h3>
+      <p class="case-intro">EOFY presented a key retail moment to accelerate revenue, with increased traffic and purchase intent across the category.</p>
+      <div class="case-sections">
+        <div class="case-section">
+          <p class="case-section-header">Challenge</p>
+          <p class="case-section-body">Maximise short-term revenue while continuing to build the customer base, balancing acquisition, conversion and retention within a highly promotional window.</p>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Approach &amp; Execution</p>
+          <div class="case-section-body"><ul>
+            <li>Full-funnel strategy leveraging a strong sitewide offer to convert high-intent traffic</li>
+            <li>Integrated campaign across digital, email, paid media, social and events</li>
+            <li>Lifecycle journeys activated to support cross-sell, upsell and repeat purchase</li>
+            <li>SKIP³ prioritised within campaign activity to drive product-led performance</li>
+          </ul></div>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Impact</p>
+          <div class="impact-stats">
+            <div><span class="impact-num">+31%</span><span class="impact-label">Revenue vs expectations</span></div>
+            <div><span class="impact-num">↑</span><span class="impact-label">Acquisition, conversion &amp; customer value</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="case-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-        <div>
-          <p class="case-tag">Redsbaby · Promotion</p>
-          <h3 class="case-title">EOFY Promotion<span class="red-stop">.</span></h3>
-          <p class="case-intro">EOFY presented a key retail moment to accelerate revenue, with increased traffic and purchase intent across the category.</p>
-          <div class="case-sections">
-            <div class="case-section">
-              <p class="case-section-header">Challenge</p>
-              <p class="case-section-body">Maximise short-term revenue while continuing to build the customer base, balancing acquisition, conversion and retention within a highly promotional window.</p>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Approach &amp; Execution</p>
-              <div class="case-section-body"><ul>
-                <li>Full-funnel strategy leveraging a strong sitewide offer to convert high-intent traffic</li>
-                <li>Integrated campaign across digital, email, paid media, social and events</li>
-                <li>Lifecycle journeys activated to support cross-sell, upsell and repeat purchase</li>
-                <li>SKIP³ prioritised within campaign activity to drive product-led performance</li>
-              </ul></div>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Impact</p>
-              <div class="impact-stats">
-                <div><span class="impact-num">+31%</span><span class="impact-label">Revenue vs expectations</span></div>
-                <div><span class="impact-num">↑</span><span class="impact-label">Acquisition, conversion &amp; customer value</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">Campaign channels</p>
-          <div class="eofy-grid">
-            <div class="eofy-cell eofy-tall"><img src="eofy1.jpg" alt="EOFY is coming — teaser"></div>
-            <div class="eofy-cell eofy-tall"><img src="eofy4.jpg" alt="20% off sitewide social"></div>
-            <div class="eofy-cell eofy-tall"><img src="eofy5.jpg" alt="Prams social ad"></div>
-            <div class="eofy-cell eofy-tall"><img src="eofy6.jpg" alt="EOFY savings social"></div>
-            <div class="eofy-cell eofy-wide"><img src="eofy7.png" alt="Display ad"></div>
-            <div class="eofy-cell eofy-wide"><img src="eofy8.png" alt="Website banner"></div>
-            <div class="eofy-cell eofy-tall" style="grid-column:span 2;aspect-ratio:unset;min-height:200px;"><img src="eofy9.png" alt="Mobile website" style="object-position:top center;"></div>
-            <div class="eofy-cell eofy-tall" style="grid-column:span 2;aspect-ratio:unset;min-height:200px;"><img src="eofy2.jpg" alt="Product grid ad"></div>
-          </div>
-        </div>
+    <div class="cs-images">
+      <p class="cs-img-label">Campaign channels</p>
+      <div class="eofy-grid">
+        <div class="eofy-cell"><img src="eofy1.jpg" alt="EOFY teaser"></div>
+        <div class="eofy-cell"><img src="eofy4.jpg" alt="20% off social"></div>
+        <div class="eofy-cell"><img src="eofy5.jpg" alt="Prams social"></div>
+        <div class="eofy-cell"><img src="eofy6.jpg" alt="EOFY savings"></div>
+        <div class="eofy-cell eofy-wide"><img src="eofy8.png" alt="Website banner"></div>
+        <div class="eofy-cell"><img src="eofy9.png" alt="Mobile"></div>
+        <div class="eofy-cell"><img src="eofy2.jpg" alt="Product grid"></div>
       </div>
     </div>
   </div>
 
   <!-- 4: Give with Heart Day -->
-  <div class="case-study-full fade-in">
-    <div class="case-banner">
-      <img src="gwhd-banner.jpg" alt="Give with Heart Day — Make today the day you help save a life" style="object-position: center 35%;">
-    </div>
-    <div class="case-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-        <div>
-          <p class="case-tag">Heart Foundation · Fundraising</p>
-          <h3 class="case-title">Give with Heart Day<span class="red-stop">.</span></h3>
-          <p class="case-intro">Give with Heart Day is the Heart Foundation's annual giving day, designed to drive donations through a concentrated period of activity and momentum.</p>
-          <div class="case-sections">
-            <div class="case-section">
-              <p class="case-section-header">Challenge</p>
-              <p class="case-section-body">Build urgency and participation within a short window, increasing donations while standing out in a crowded fundraising environment.</p>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Approach &amp; Execution</p>
-              <div class="case-section-body"><ul>
-                <li>Integrated campaign across digital, email, paid media, PR and social</li>
-                <li>Ambassador Jon Stevens leveraged to strengthen emotional connection</li>
-                <li>Matched giving partnerships activated to drive urgency and participation</li>
-                <li>Messaging and channels optimised in real time to maximise conversion</li>
-              </ul></div>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Impact</p>
-              <div class="impact-stats">
-                <div><span class="impact-num">$827k</span><span class="impact-label">Raised in 24 hours</span></div>
-                <div><span class="impact-num">+18%</span><span class="impact-label">Above the $700k target</span></div>
-              </div>
-            </div>
+  <div class="cs-card fade-in">
+    <div class="cs-text">
+      <p class="case-tag">Heart Foundation · Fundraising</p>
+      <h3 class="case-title">Give with Heart Day<span class="red-stop">.</span></h3>
+      <p class="case-intro">Give with Heart Day is the Heart Foundation's annual giving day, designed to drive donations through a concentrated period of activity and momentum.</p>
+      <div class="case-sections">
+        <div class="case-section">
+          <p class="case-section-header">Challenge</p>
+          <p class="case-section-body">Build urgency and participation within a short window, increasing donations while standing out in a crowded fundraising environment.</p>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Approach &amp; Execution</p>
+          <div class="case-section-body"><ul>
+            <li>Integrated campaign across digital, email, paid media, PR and social</li>
+            <li>Ambassador Jon Stevens leveraged to strengthen emotional connection</li>
+            <li>Matched giving partnerships activated to drive urgency and participation</li>
+            <li>Messaging and channels optimised in real time to maximise conversion</li>
+          </ul></div>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Impact</p>
+          <div class="impact-stats">
+            <div><span class="impact-num">$827k</span><span class="impact-label">Raised in 24 hours</span></div>
+            <div><span class="impact-num">+18%</span><span class="impact-label">Above the $700k target</span></div>
           </div>
         </div>
-        <div>
-          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">Campaign channels</p>
-          <div class="channel-grid">
-            <div class="channel-grid-item">
-              <img src="gwhd-dm.png" alt="Direct mail">
-              <span class="channel-grid-label">Direct Mail</span>
-            </div>
-            <div class="channel-grid-item">
-              <img src="gwhd-edm.png" alt="eDM">
-              <span class="channel-grid-label">eDM</span>
-            </div>
-            <div class="channel-grid-item">
-              <img src="gwhd-social.png" alt="Social">
-              <span class="channel-grid-label">Social</span>
-            </div>
-            <div class="channel-grid-item">
-              <img src="gwhd-website.png" alt="Website">
-              <span class="channel-grid-label">Website</span>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="cs-images">
+      <p class="cs-img-label">Campaign channels</p>
+      <div class="channel-grid">
+        <div class="channel-grid-item">
+          <img src="gwhd-banner.jpg" alt="Hero banner">
+          <span class="channel-grid-label">Campaign Banner</span>
+        </div>
+        <div class="channel-grid-item">
+          <img src="gwhd-dm.png" alt="Direct mail">
+          <span class="channel-grid-label">Direct Mail</span>
+        </div>
+        <div class="channel-grid-item">
+          <img src="gwhd-edm.png" alt="eDM">
+          <span class="channel-grid-label">eDM</span>
+        </div>
+        <div class="channel-grid-item">
+          <img src="gwhd-social.png" alt="Social">
+          <span class="channel-grid-label">Social</span>
+        </div>
+        <div class="channel-grid-item" style="grid-column:span 2;">
+          <img src="gwhd-website.png" alt="Website">
+          <span class="channel-grid-label">Website</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- 5: Masterbrand Refresh -->
-  <div class="case-study-full fade-in">
-    <div class="case-banner">
-      <img src="mb-brand.png" alt="Heart Foundation Masterbrand Guidelines" style="object-position: center center; object-fit: contain; background: #e8e8e8;">
-    </div>
-    <div class="case-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-        <div>
-          <p class="case-tag">Heart Foundation · Brand</p>
-          <h3 class="case-title">Masterbrand Refresh<span class="red-stop">.</span></h3>
-          <p class="case-intro">Following the transition from a federated to a national organisation, the Heart Foundation needed to unify its brand and modernise how it showed up across all touchpoints.</p>
-          <div class="case-sections">
-            <div class="case-section">
-              <p class="case-section-header">Challenge</p>
-              <p class="case-section-body">Bring together a fragmented brand into a cohesive national system, improving clarity, consistency and relevance, while maintaining trust in a legacy organisation.</p>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Approach &amp; Execution</p>
-              <div class="case-section-body"><ul>
-                <li>Led end-to-end brand strategy, positioning and identity development</li>
-                <li>Delivered comprehensive brand, digital and photography guidelines</li>
-                <li>Partnered with internal teams and agencies to ensure alignment and rollout</li>
-                <li>Embedded the new system across key touchpoints nationally</li>
-              </ul></div>
-            </div>
-            <div class="case-section">
-              <p class="case-section-header">Impact</p>
-              <p class="case-section-body">Established a cohesive, contemporary brand system adopted nationally — transforming a legacy, fragmented brand into a unified national identity, strengthening relevance with audiences and providing a clear foundation for future growth.</p>
-            </div>
-          </div>
+  <div class="cs-card fade-in">
+    <div class="cs-text">
+      <p class="case-tag">Heart Foundation · Brand</p>
+      <h3 class="case-title">Masterbrand Refresh<span class="red-stop">.</span></h3>
+      <p class="case-intro">Following the transition from a federated to a national organisation, the Heart Foundation needed to unify its brand and modernise how it showed up across all touchpoints.</p>
+      <div class="case-sections">
+        <div class="case-section">
+          <p class="case-section-header">Challenge</p>
+          <p class="case-section-body">Bring together a fragmented brand into a cohesive national system, improving clarity, consistency and relevance, while maintaining trust in a legacy organisation.</p>
         </div>
-        <div>
-          <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">Brand system deliverables</p>
-          <div class="mb-docs">
-            <div class="mb-doc">
-              <div class="mb-doc-img"><img src="mb-brand.png" alt="Masterbrand Guidelines"></div>
-              <p class="mb-doc-label">Masterbrand Guidelines</p>
-            </div>
-            <div class="mb-doc">
-              <div class="mb-doc-img"><img src="mb-digital.png" alt="Digital Brand Guidelines"></div>
-              <p class="mb-doc-label">Digital Brand Guidelines</p>
-            </div>
-            <div class="mb-doc">
-              <div class="mb-doc-img"><img src="mb-food.png" alt="Food Photography Guidelines"></div>
-              <p class="mb-doc-label">Photography Guidelines</p>
-            </div>
-          </div>
+        <div class="case-section">
+          <p class="case-section-header">Approach &amp; Execution</p>
+          <div class="case-section-body"><ul>
+            <li>Led end-to-end brand strategy, positioning and identity development</li>
+            <li>Delivered comprehensive brand, digital and photography guidelines</li>
+            <li>Partnered with internal teams and agencies to ensure alignment and rollout</li>
+            <li>Embedded the new system across key touchpoints nationally</li>
+          </ul></div>
+        </div>
+        <div class="case-section">
+          <p class="case-section-header">Impact</p>
+          <p class="case-section-body">Established a cohesive, contemporary brand system adopted nationally — transforming a legacy, fragmented brand into a unified national identity, strengthening relevance with audiences and providing a clear foundation for future growth.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cs-images">
+      <p class="cs-img-label">Brand system deliverables</p>
+      <div class="mb-docs">
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-brand.png" alt="Masterbrand Guidelines"></div>
+          <p class="mb-doc-label">Masterbrand Guidelines</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-digital.png" alt="Digital Brand Guidelines"></div>
+          <p class="mb-doc-label">Digital Brand Guidelines</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-food.png" alt="Food Photography Guidelines"></div>
+          <p class="mb-doc-label">Photography Guidelines</p>
         </div>
       </div>
     </div>
