@@ -138,16 +138,14 @@
     overflow: hidden;
     background: var(--bg);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
   }
   .hero-image img {
-    width: auto;
-    height: 88%;
-    max-height: 560px;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: bottom center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
     display: block;
   }
 
@@ -412,45 +410,48 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
-  .mb-doc { display: flex; flex-direction: column; gap: 0.5rem; }
+  .mb-doc { display: flex; flex-direction: column; gap: 0; position: relative; }
   .mb-doc-img {
     overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgba(31,58,95,0.12);
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 4px 20px rgba(31,58,95,0.15);
     aspect-ratio: 4/3;
-    background: var(--card);
+    background: var(--white);
   }
   .mb-doc-img img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
     display: block;
     transition: transform 0.4s ease;
   }
   .mb-doc:hover .mb-doc-img img { transform: scale(1.04); }
   .mb-doc-label {
-    font-size: 0.72rem;
+    font-size: 0.65rem;
     font-weight: 400;
-    letter-spacing: 0.06em;
-    color: var(--mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
     text-align: center;
+    background: rgba(31,58,95,0.9);
+    padding: 0.4rem 0.5rem;
+    border-radius: 0 0 4px 4px;
   }
 
   /* EOFY MIXED GRID */
   .eofy-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto auto;
     gap: 6px;
   }
   .eofy-cell {
     overflow: hidden;
-    background: var(--card);
+    background: var(--white);
   }
   .eofy-cell img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
     display: block;
     transition: transform 0.4s ease;
   }
@@ -458,7 +459,13 @@
   .eofy-tall { aspect-ratio: 9/16; }
   .eofy-wide {
     grid-column: span 2;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/6;
+    background: var(--white);
+  }
+  .eofy-wide img {
+    object-fit: contain;
+    object-position: center center;
+    background: var(--white);
   }
 
   /* RB10 CAMPAIGN GRID — 3x2 square tiles */
@@ -485,13 +492,13 @@
   .skip-mosaic { display: flex; flex-direction: column; gap: 6px; }
   .skip-mosaic-main {
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/2;
     overflow: hidden;
   }
   .skip-mosaic-main img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
     display: block;
     transition: transform 0.4s ease;
   }
@@ -509,7 +516,7 @@
   .skip-mosaic-cell img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 20%;
     display: block;
     transition: transform 0.4s ease;
   }
@@ -524,7 +531,7 @@
   }
   .case-study-full .case-banner {
     width: 100%;
-    max-height: 320px;
+    height: 380px;
     overflow: hidden;
     display: block;
   }
@@ -548,13 +555,13 @@
     position: relative;
     overflow: hidden;
     background: var(--card);
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
   }
   .channel-grid-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center top;
     display: block;
     transition: transform 0.4s ease;
   }
@@ -562,12 +569,12 @@
   .channel-grid-label {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    background: rgba(31,58,95,0.82);
+    background: rgba(31,58,95,0.9);
     color: var(--white);
     font-size: 0.65rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.35rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     text-align: center;
   }
 
@@ -670,7 +677,7 @@
   <!-- 1: 10 Year Anniversary -->
   <div class="case-study-full fade-in">
     <div class="case-banner">
-      <img src="rb10-nuvo.jpg" alt="Redsbaby 10 Years — NUVO at Sydney Opera House">
+      <img src="rb10-nuvo.jpg" alt="Redsbaby 10 Years — NUVO at Sydney Opera House" style="object-position: center 55%;">
     </div>
     <div class="case-body">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
@@ -719,7 +726,7 @@
   <!-- 2: SKIP3 Launch -->
   <div class="case-study-full fade-in">
     <div class="case-banner">
-      <img src="skip1.jpg" alt="SKIP³ — defy gravity hero shot">
+      <img src="skip1.jpg" alt="SKIP³ — defy gravity hero shot" style="object-position: center 40%;">
     </div>
     <div class="case-body">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
@@ -805,18 +812,14 @@
         <div>
           <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">Campaign channels</p>
           <div class="eofy-grid">
-            <!-- Row 1: tall social ads -->
             <div class="eofy-cell eofy-tall"><img src="eofy1.jpg" alt="EOFY is coming — teaser"></div>
             <div class="eofy-cell eofy-tall"><img src="eofy4.jpg" alt="20% off sitewide social"></div>
             <div class="eofy-cell eofy-tall"><img src="eofy5.jpg" alt="Prams social ad"></div>
             <div class="eofy-cell eofy-tall"><img src="eofy6.jpg" alt="EOFY savings social"></div>
-            <!-- Row 2: wide channel assets -->
             <div class="eofy-cell eofy-wide"><img src="eofy7.png" alt="Display ad"></div>
             <div class="eofy-cell eofy-wide"><img src="eofy8.png" alt="Website banner"></div>
-            <!-- Row 3: mobile + email -->
-            <div class="eofy-cell eofy-tall"><img src="eofy9.png" alt="Mobile website"></div>
-            <div class="eofy-cell eofy-tall"><img src="eofy10.png" alt="Email"></div>
-            <div class="eofy-cell eofy-tall"><img src="eofy2.jpg" alt="Product grid ad"></div>
+            <div class="eofy-cell eofy-tall" style="grid-column:span 2;aspect-ratio:unset;min-height:200px;"><img src="eofy9.png" alt="Mobile website" style="object-position:top center;"></div>
+            <div class="eofy-cell eofy-tall" style="grid-column:span 2;aspect-ratio:unset;min-height:200px;"><img src="eofy2.jpg" alt="Product grid ad"></div>
           </div>
         </div>
       </div>
@@ -826,7 +829,7 @@
   <!-- 4: Give with Heart Day -->
   <div class="case-study-full fade-in">
     <div class="case-banner">
-      <img src="gwhd-banner.jpg" alt="Give with Heart Day — Make today the day you help save a life">
+      <img src="gwhd-banner.jpg" alt="Give with Heart Day — Make today the day you help save a life" style="object-position: center 35%;">
     </div>
     <div class="case-body">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
@@ -885,7 +888,7 @@
   <!-- 5: Masterbrand Refresh -->
   <div class="case-study-full fade-in">
     <div class="case-banner">
-      <img src="mb-brand.png" alt="Heart Foundation Masterbrand Guidelines">
+      <img src="mb-brand.png" alt="Heart Foundation Masterbrand Guidelines" style="object-position: center center; object-fit: contain; background: #e8e8e8;">
     </div>
     <div class="case-body">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
