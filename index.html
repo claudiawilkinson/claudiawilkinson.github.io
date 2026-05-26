@@ -391,36 +391,24 @@
     letter-spacing: 0.08em;
   }
 
-  /* MASTERBRAND DOCS — large top + two below */
+  /* MASTERBRAND DOCS — large top-left + grid */
   .mb-docs { display: flex; flex-direction: column; gap: 4px; }
-  .mb-doc { display: flex; flex-direction: column; position: relative; }
-  .mb-doc-img {
-    overflow: hidden;
-    background: var(--white);
-    width: 100%;
-  }
-  .mb-doc-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .mb-doc:hover .mb-doc-img img { transform: scale(1.02); }
-  .mb-doc-label {
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-align: center;
-    background: rgba(31,58,95,0.9);
-    padding: 0.4rem 0.5rem;
-  }
-  .mb-docs-row {
+  .mb-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 4px;
   }
+  .mb-doc-large { grid-column: span 2; }
+  .mb-doc { display: flex; flex-direction: column; position: relative; }
+  .mb-doc-img { overflow: hidden; background: var(--white); width: 100%; }
+  .mb-doc-img img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .mb-doc:hover .mb-doc-img img { transform: scale(1.02); }
+  .mb-doc-label {
+    font-size: 0.65rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--white); text-align: center;
+    background: rgba(31,58,95,0.9); padding: 0.4rem 0.5rem;
+  }
+  .mb-docs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 
   /* EOFY GRID — 2 rows of 4, then full-width banner */
   .eofy-grid { display: flex; flex-direction: column; gap: 4px; }
@@ -469,12 +457,21 @@
     font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
     padding: 0.4rem 0.5rem; text-align: center;
   }
-  .gwhd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .gwhd-row { display: grid; grid-template-columns: 3fr 2fr; gap: 4px; }
   .gwhd-cell { overflow: hidden; background: var(--card); position: relative; }
   .gwhd-cell img { width: 100%; height: auto; display: block; transition: transform 0.3s ease; }
   .gwhd-cell:hover img { transform: scale(1.02); }
   .gwhd-cell-label {
     position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(31,58,95,0.9); color: var(--white);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 0.5rem; text-align: center;
+  }
+  .gwhd-cell-wide { }
+  .gwhd-cell-narrow { }
+
+  /* EOFY label bars */
+  .eofy-row-label-bar {
     background: rgba(31,58,95,0.9); color: var(--white);
     font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
     padding: 0.4rem 0.5rem; text-align: center;
@@ -656,9 +653,9 @@
           <img src="skip1.jpg" alt="SKIP³ defy gravity">
         </div>
         <div class="skip-mosaic-grid">
-          <div class="skip-mosaic-cell"><img src="skip4.jpg" alt="SKIP³ at the station"></div>
-          <div class="skip-mosaic-cell"><img src="skip5.jpg" alt="SKIP³ lifestyle"></div>
-          <div class="skip-mosaic-cell"><img src="skip6.jpg" alt="SKIP³ with child"></div>
+          <div class="skip-mosaic-cell"><img src="skip10.jpg" alt="SKIP³ lifestyle"></div>
+          <div class="skip-mosaic-cell"><img src="skip5.jpg" alt="SKIP³ portrait"></div>
+          <div class="skip-mosaic-cell"><img src="skip3.jpg" alt="SKIP³ with child"></div>
           <div class="skip-mosaic-cell"><img src="skip11.jpg" alt="SKIP³ travel"></div>
         </div>
       </div>
@@ -697,19 +694,10 @@
     <div class="cs-images">
       <p class="cs-img-label">Campaign channels</p>
       <div class="eofy-grid">
-        <div class="eofy-row">
-          <div class="eofy-cell"><img src="eofy1.jpg" alt="EOFY teaser"></div>
-          <div class="eofy-cell"><img src="eofy11.png" alt="EOFY product"></div>
-          <div class="eofy-cell"><img src="eofy3.png" alt="EOFY lifestyle"></div>
-          <div class="eofy-cell"><img src="eofy2.jpg" alt="Product grid"></div>
-        </div>
-        <div class="eofy-row">
-          <div class="eofy-cell"><img src="eofy4.jpg" alt="20% off social"></div>
-          <div class="eofy-cell"><img src="eofy5.jpg" alt="Prams social"></div>
-          <div class="eofy-cell"><img src="eofy6.jpg" alt="EOFY savings"></div>
-          <div class="eofy-cell"><img src="eofy9.png" alt="Mobile"></div>
-        </div>
+        <div class="eofy-banner"><img src="eofy11.png" alt="EOFY social ads composite"></div>
+        <div class="eofy-row-label-bar">Social</div>
         <div class="eofy-banner"><img src="eofy8.png" alt="Website banner"></div>
+        <div class="eofy-row-label-bar">Website</div>
       </div>
     </div>
   </div>
@@ -751,21 +739,21 @@
           <span class="gwhd-banner-label">Campaign Banner</span>
         </div>
         <div class="gwhd-row">
-          <div class="gwhd-cell">
+          <div class="gwhd-cell gwhd-cell-wide">
             <img src="gwhd-website.png" alt="Website">
             <span class="gwhd-cell-label">Website</span>
           </div>
-          <div class="gwhd-cell">
+          <div class="gwhd-cell gwhd-cell-narrow">
             <img src="gwhd-dm.png" alt="Direct Mail">
             <span class="gwhd-cell-label">Direct Mail</span>
           </div>
         </div>
         <div class="gwhd-row">
-          <div class="gwhd-cell">
+          <div class="gwhd-cell gwhd-cell-wide">
             <img src="gwhd-social.png" alt="Social">
             <span class="gwhd-cell-label">Social</span>
           </div>
-          <div class="gwhd-cell">
+          <div class="gwhd-cell gwhd-cell-narrow">
             <img src="gwhd-edm.png" alt="eDM">
             <span class="gwhd-cell-label">eDM</span>
           </div>
@@ -802,20 +790,34 @@
     </div>
     <div class="cs-images">
       <p class="cs-img-label">Brand system deliverables</p>
-      <div class="mb-docs">
-        <div class="mb-doc">
+      <div class="mb-grid">
+        <div class="mb-doc mb-doc-large">
           <div class="mb-doc-img"><img src="mb-brand.png" alt="Masterbrand Guidelines"></div>
           <p class="mb-doc-label">Masterbrand Guidelines</p>
         </div>
-        <div class="mb-docs-row">
-          <div class="mb-doc">
-            <div class="mb-doc-img"><img src="mb-digital.png" alt="Digital Brand Guidelines"></div>
-            <p class="mb-doc-label">Digital Guidelines</p>
-          </div>
-          <div class="mb-doc">
-            <div class="mb-doc-img"><img src="mb-food.png" alt="Food Photography Guidelines"></div>
-            <p class="mb-doc-label">Photography Guidelines</p>
-          </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-edm.jpg" alt="EDM Guidelines"></div>
+          <p class="mb-doc-label">EDM Guidelines</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-digital.png" alt="Digital Guidelines"></div>
+          <p class="mb-doc-label">Digital Guidelines</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-food2.jpg" alt="Food Guidelines"></div>
+          <p class="mb-doc-label">Food Photography</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-copy.jpg" alt="Copy Library"></div>
+          <p class="mb-doc-label">Copy Library</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-food.png" alt="Photography Guidelines"></div>
+          <p class="mb-doc-label">Photography Guidelines</p>
+        </div>
+        <div class="mb-doc">
+          <div class="mb-doc-img"><img src="mb-social.jpg" alt="Social Guidelines"></div>
+          <p class="mb-doc-label">Social Guidelines</p>
         </div>
       </div>
     </div>
